@@ -7,12 +7,11 @@ import socket
 from datetime import datetime
 
 #Beginning of the scan
-host = input ("Enter Address to Scan: ")
+host = raw_input("Enter Address to Scan: ")
 ip = socket.gethostbyname(host) #puts host into IPv4 format
 
-print("-" * 80)
-print("		Scanning the host -------------------------->", ip) #Helps user feel like something is happening :P 
-print("-" * 80)
+print("Scanning the host -------------------------->", ip) #Helps user feel like something is happening :P 
+
 
 #Time 
 t1 = datetime.now()
