@@ -24,4 +24,13 @@ try:
 		result = sock.connect((ip,port))
 		if result == 0:
 			#If a socket is listening it'll print out the number
-			print("\n Port $d is open -----" %(port))
+			print("\n Port %d is open -----" %(port))
+		else:
+			print("\n Port %d is closed -----"%(port))
+except:
+	pass
+
+#Show time  executed
+t2 = datetime.now()
+total = t2 - t1
+print("Total Scanning Time: ", total)
