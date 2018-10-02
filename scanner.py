@@ -46,8 +46,8 @@ except:
 
 def thread():
 	while True:
-		work = q.get()
-		scan(work) #scan becomes a function with a job with available process in queue
+		worker = q.get()
+		scan(worker) #scan becomes a function with a job with available process in queue
 		q.task_done()
 
 q = Queue()
@@ -59,7 +59,7 @@ for x in range(60):
 	t.start()
 
 for work in range(1,100):
-	q.put(work)
+	q.put(worker)
 
 #thread joins
 q.join()		
