@@ -12,16 +12,10 @@ import sys
 import argparse
 
 #Parse Arguments to help out with the functionality of the script
-parser = argparse.ArgumentParser(description = 'Python port scanner that uses sockets to connect and identify ports that are opened and closed')
-parser.add_argument('String', metavar='S', type =str, nargs='+', help ='string to enter in as IP address')
-args = parser.parse_args()
-print(args.accumulate(args.String))
-
-
-
-
-
-
+#parser = argparse.ArgumentParser(description = 'Python port scanner that uses sockets to connect and identify ports that are opened and closed')
+#parser.add_argument('String', metavar='S', type =str, nargs='+', help ='string to enter in as IP address')
+#args = parser.parse_args()
+#print(args.accumulate(args.String))
 
 
 print_lock = threading.Lock()
@@ -38,12 +32,13 @@ t1 = datetime.now()
 
 #Scanning code
 try:
-	for port in range(1,100):
+	for port in range(1024):
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #creates sock stream
 		result = sock.connect((ip,port))
 		if result == 0:
 			#If a socket is listening it'll print out the number
 			print("\n Port %d is open -----" %(port))
+			sock.close()
 		else:
 			print("\n Port %d is closed -----"%(port))
 except:
