@@ -7,6 +7,22 @@ import socket
 from datetime import datetime
 import threading
 from queue import Queue
+import subprocess
+import sys
+import argparse
+
+#Parse Arguments to help out with the functionality of the script
+parser = argparse.ArgumentParser(description = 'Python port scanner that uses sockets to connect and identify ports that are opened and closed')
+parser.add_argument('String', metavar='S', type =str, nargs='+', help ='string to enter in as IP address')
+args = parser.parse_args()
+print(args.accumulate(args.String))
+
+
+
+
+
+
+
 
 print_lock = threading.Lock()
 #Beginning of the scan
