@@ -5,9 +5,12 @@
 
 import socket
 from datetime import datetime
+import threading
+from queue import Queue
 
+print_lock = threading.Lock()
 #Beginning of the scan
-host = input ("Enter Address to Scan: ")
+host = raw_input ("Enter Address to Scan: ")
 ip = socket.gethostbyname(host) #puts host into IPv4 format
 
 print("-" * 80)
@@ -29,6 +32,26 @@ try:
 			print("\n Port %d is closed -----"%(port))
 except:
 	pass
+
+def thread():
+	while True:
+		work = q.get()
+		scan(work) #scan becomes a function with a job with available process in queue
+		q.task_done()
+
+q = Queue()
+
+#threads allowed code
+for x in range(60):
+	t = threading.Thread(target=threader)
+	t.daemon=True
+	t.start()
+
+for work in range(1,100):
+	q.put(work)
+
+#thread joins
+q.join()		
 
 #Show time  executed
 t2 = datetime.now()
