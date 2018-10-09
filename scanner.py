@@ -18,7 +18,7 @@ t1 = datetime.now()
 
 #Scanning code
 try:
-	for port in range(1,100):
+	for port in range(79,80):
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #creates sock stream
 		result = sock.connect((ip,port))
 		if result == 0:
@@ -32,4 +32,4 @@ except:
 #Show time  executed
 t2 = datetime.now()
 total = t2 - t1
-print("Total Scanning Time: ", total)
+print "Total Scanning Time: ", total
