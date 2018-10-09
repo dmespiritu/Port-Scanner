@@ -1,3 +1,5 @@
+#DAVID GREERS CODE THAT I USED FOR HELP 
+
 from scapy.all import *
 import argparse
 import os
@@ -216,4 +218,3 @@ for arguement in arguements_dict:
     if arguements_dict[arguement] is True:
         response = locals()[arguement]( hosts , ports )
         print_results(response)
-        
